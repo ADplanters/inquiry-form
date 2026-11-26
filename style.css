@@ -1,0 +1,998 @@
+/* ==========================================================================
+   ADplanters Inquiry Landing Page — Premium Design System
+   Signature Accent: #F37021 | Theme: Deep Carbon Obsidian
+   ========================================================================== */
+
+:root {
+  /* Core Palette */
+  --ap-bg: #06080c;
+  --ap-card-bg: rgba(14, 18, 26, 0.78);
+  --ap-card-bg-solid: #0e121a;
+  --ap-surface: rgba(255, 255, 255, 0.03);
+  --ap-input-bg: rgba(7, 10, 15, 0.9);
+
+  /* Border Tokens */
+  --ap-border: rgba(255, 255, 255, 0.09);
+  --ap-border-hover: rgba(255, 255, 255, 0.22);
+  --ap-border-accent: rgba(243, 112, 33, 0.45);
+
+  /* Typography Colors */
+  --ap-text: #f8fafc;
+  --ap-text-sub: #9ca3af;
+  --ap-text-muted: #6b7280;
+
+  /* Signature Brand & Kakao Colors */
+  --ap-accent: #F37021;
+  --ap-accent-light: #ff8e47;
+  --ap-accent-dark: #d95a0e;
+  --ap-accent-soft: rgba(243, 112, 33, 0.14);
+  --ap-accent-glow: rgba(243, 112, 33, 0.34);
+  --ap-kakao: #FEE500;
+  --ap-kakao-text: #191919;
+
+  /* Typography & Motion */
+  --ap-font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --ap-font-en: 'Plus Jakarta Sans', 'Pretendard Variable', sans-serif;
+  --ap-ease: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Radii */
+  --ap-radius-xl: 26px;
+  --ap-radius-lg: 18px;
+  --ap-radius-md: 12px;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--ap-bg);
+  color: var(--ap-text);
+  font-family: var(--ap-font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ==========================================================================
+   Ambient Background Aura & Architectural Grid
+   ========================================================================== */
+.ap-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ap-ambient::before {
+  content: "";
+  position: absolute;
+  top: -220px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 540px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(243, 112, 33, 0.19) 0%,
+    rgba(243, 112, 33, 0.05) 45%,
+    transparent 74%
+  );
+  filter: blur(26px);
+}
+
+.ap-ambient::after {
+  content: "";
+  position: absolute;
+  bottom: -240px;
+  right: -120px;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(243, 112, 33, 0.1) 0%,
+    rgba(30, 58, 95, 0.16) 45%,
+    transparent 72%
+  );
+  filter: blur(32px);
+}
+
+.ap-grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 18%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 18%, #000 30%, transparent 100%);
+}
+
+/* ==========================================================================
+   Sticky Top Header
+   ========================================================================== */
+.ap-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(6, 8, 12, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--ap-border);
+}
+
+.ap-header__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ap-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.3s var(--ap-ease);
+  /* ※ 로고가 검정 텍스트라 어두운 배경에서 대비가 낮다면 아래 3줄의 주석을 해제하세요 */
+  /* background: rgba(255, 255, 255, 0.96); */
+  /* padding: 6px 14px; */
+  /* border-radius: 10px; */
+}
+
+.ap-logo:hover {
+  opacity: 0.88;
+}
+
+.ap-logo__img {
+  display: block;
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+.ap-header__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--ap-border);
+  background: var(--ap-surface);
+  color: var(--ap-text-sub);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.4s var(--ap-ease);
+}
+
+.ap-header__back:hover {
+  color: var(--ap-text);
+  border-color: var(--ap-border-hover);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Main Full-Immersive Center Layout
+   ========================================================================== */
+.ap-main {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+/* Hero Typography */
+.ap-hero {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 44px;
+}
+
+.ap-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(243, 112, 33, 0.34);
+  background: rgba(243, 112, 33, 0.1);
+  color: var(--ap-accent-light);
+  font-family: var(--ap-font-en);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 22px;
+}
+
+.ap-badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ap-accent);
+  box-shadow: 0 0 0 0 rgba(243, 112, 33, 0.7);
+  animation: apPulse 2.2s infinite;
+}
+
+@keyframes apPulse {
+  0% { box-shadow: 0 0 0 0 rgba(243, 112, 33, 0.7); }
+  70% { box-shadow: 0 0 0 9px rgba(243, 112, 33, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(243, 112, 33, 0); }
+}
+
+.ap-hero__title {
+  font-size: clamp(32px, 4.6vw, 48px);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.035em;
+  color: var(--ap-text);
+  margin-bottom: 18px;
+}
+
+.ap-hero__accent {
+  background: linear-gradient(135deg, #F37021 0%, #ffa366 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ap-hero__desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ap-text-sub);
+}
+
+.ap-hero__desc strong {
+  color: var(--ap-text);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Featured Glassmorphic DB Form Card (Glow Aura + Hover Elevation)
+   ========================================================================== */
+.ap-form-section {
+  max-width: 680px;
+  margin: 0 auto 64px;
+}
+
+.ap-card {
+  position: relative;
+  border-radius: var(--ap-radius-xl);
+  background: var(--ap-card-bg);
+  border: 1px solid var(--ap-border);
+  padding: 42px 40px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  /* 깊이감 있는 시그니처 글로우 아우라 */
+  box-shadow:
+    0 32px 72px -18px rgba(0, 0, 0, 0.85),
+    0 0 48px -16px rgba(243, 112, 33, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.4s var(--ap-ease);
+  overflow: hidden;
+}
+
+.ap-card:hover {
+  border-color: rgba(243, 112, 33, 0.28);
+  box-shadow:
+    0 38px 80px -18px rgba(0, 0, 0, 0.9),
+    0 0 64px -14px rgba(243, 112, 33, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* 상단 시그니처 그라디언트 헤어라인 */
+.ap-card--featured::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 5%, var(--ap-accent) 50%, transparent 95%);
+}
+
+.ap-card__top {
+  margin-bottom: 28px;
+}
+
+.ap-card__title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--ap-text);
+  margin-bottom: 6px;
+}
+
+.ap-card__subtitle {
+  font-size: 14px;
+  color: var(--ap-text-sub);
+}
+
+/* Form Controls */
+.ap-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ap-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ap-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ap-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ap-req {
+  color: var(--ap-accent);
+  font-weight: 700;
+}
+
+.ap-opt {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ap-text-muted);
+}
+
+.ap-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: var(--ap-radius-md);
+  border: 1px solid var(--ap-border);
+  background: var(--ap-input-bg);
+  color: var(--ap-text);
+  font-family: inherit;
+  font-size: 15px;
+  transition: all 0.35s var(--ap-ease);
+}
+
+.ap-input::placeholder {
+  color: var(--ap-text-muted);
+}
+
+.ap-input:hover {
+  border-color: var(--ap-border-hover);
+}
+
+.ap-input:focus {
+  outline: none;
+  border-color: var(--ap-accent);
+  background: #090d14;
+  box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.2);
+}
+
+.ap-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+/* Inquiry Type Selectable Chips */
+.ap-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.ap-chip {
+  position: relative;
+  cursor: pointer;
+}
+
+.ap-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ap-chip span {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid var(--ap-border);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--ap-text-sub);
+  font-size: 13.5px;
+  font-weight: 600;
+  user-select: none;
+  transition: all 0.35s var(--ap-ease);
+}
+
+.ap-chip:hover span {
+  border-color: var(--ap-border-hover);
+  color: var(--ap-text);
+  transform: translateY(-1px);
+}
+
+.ap-chip input:checked + span {
+  border-color: var(--ap-accent);
+  background: var(--ap-accent-soft);
+  color: #ffffff;
+  box-shadow:
+    0 0 0 1px var(--ap-accent) inset,
+    0 6px 18px -6px rgba(243, 112, 33, 0.4);
+}
+
+/* Privacy Row */
+.ap-privacy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--ap-radius-md);
+  background: var(--ap-surface);
+  border: 1px solid var(--ap-border);
+}
+
+.ap-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13.5px;
+  color: #e5e7eb;
+}
+
+.ap-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--ap-accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ap-privacy__btn {
+  border: none;
+  background: transparent;
+  color: var(--ap-text-sub);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.25s var(--ap-ease);
+}
+
+.ap-privacy__btn:hover {
+  color: var(--ap-accent-light);
+}
+
+/* Error Feedback & Honeypot */
+.ap-error {
+  display: none;
+  padding: 12px 15px;
+  border-radius: 10px;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  color: #fca5a5;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.ap-error.is-visible {
+  display: block;
+}
+
+.ap-honeypot {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Primary CTA Button (Signature #F37021 + 절제된 Shimmer 광택 효과)
+   ========================================================================== */
+.ap-btn-primary {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  height: 58px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--ap-accent) 0%, var(--ap-accent-dark) 100%);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  cursor: pointer;
+  box-shadow: 0 14px 32px -8px var(--ap-accent-glow);
+  transition: all 0.4s var(--ap-ease);
+}
+
+.ap-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.07);
+  box-shadow: 0 20px 38px -8px rgba(243, 112, 33, 0.55);
+}
+
+.ap-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.ap-btn-primary:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+/* 우아하고 느린 속도의 쉬머(Shimmer) 애니메이션 — 핵심 CTA 1곳에만 선별 적용 */
+.ap-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 35%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 255, 255, 0.06) 65%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: apShimmerSweep 5.2s var(--ap-ease) infinite;
+  pointer-events: none;
+}
+
+@keyframes apShimmerSweep {
+  0%, 62% { left: -130%; }
+  100% { left: 165%; }
+}
+
+.ap-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: apSpin 0.75s linear infinite;
+}
+
+.ap-btn-primary.is-loading .ap-spinner {
+  display: inline-block;
+}
+
+@keyframes apSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Divider */
+.ap-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 0 18px;
+}
+
+.ap-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--ap-border);
+}
+
+.ap-divider span {
+  position: relative;
+  padding: 0 14px;
+  background: var(--ap-card-bg-solid);
+  font-size: 12.5px;
+  color: var(--ap-text-muted);
+}
+
+/* ==========================================================================
+   Secondary CTA: 1:1 카카오톡 바로 문의하기 (문의하기 버튼 바로 하단)
+   ========================================================================== */
+.ap-btn-kakao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  height: 54px;
+  border-radius: 14px;
+  background: var(--ap-kakao);
+  color: var(--ap-kakao-text);
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+  transition: all 0.4s var(--ap-ease);
+}
+
+.ap-btn-kakao:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.96);
+  box-shadow: 0 14px 28px -10px rgba(254, 229, 0, 0.42);
+}
+
+.ap-btn-kakao--sm {
+  height: 48px;
+  font-size: 14.5px;
+}
+
+.ap-btn-kakao__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Bottom 3-Column Consultation Process Cards (Hover Glow)
+   ========================================================================== */
+.ap-process__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ap-step-card {
+  padding: 28px 24px;
+  border-radius: var(--ap-radius-lg);
+  background: var(--ap-surface);
+  border: 1px solid var(--ap-border);
+  box-shadow: 0 16px 36px -18px rgba(0, 0, 0, 0.7);
+  transition: all 0.4s var(--ap-ease);
+}
+
+.ap-step-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--ap-border-accent);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow:
+    0 22px 44px -18px rgba(0, 0, 0, 0.8),
+    0 0 28px -10px rgba(243, 112, 33, 0.25);
+}
+
+.ap-step-card__num {
+  display: inline-block;
+  font-family: var(--ap-font-en);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--ap-accent);
+  margin-bottom: 10px;
+}
+
+.ap-step-card__title {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--ap-text);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.ap-step-card__desc {
+  font-size: 14px;
+  color: var(--ap-text-sub);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.ap-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--ap-border);
+  padding: 26px 24px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--ap-text-muted);
+}
+
+/* ==========================================================================
+   High-End Scale Modal (Backdrop Blur + 3D Scale Entrance)
+   ========================================================================== */
+.ap-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ap-ease), visibility 0.35s var(--ap-ease);
+}
+
+.ap-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ap-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 4, 8, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.ap-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  padding: 30px 28px;
+  border-radius: 22px;
+  background: #10151f;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 32px 72px -12px rgba(0, 0, 0, 0.9),
+    0 0 42px -14px rgba(243, 112, 33, 0.25);
+  transform: scale(0.9) translateY(14px);
+  transition: transform 0.4s var(--ap-ease);
+}
+
+.ap-modal.is-open .ap-modal__dialog {
+  transform: scale(1) translateY(0);
+}
+
+.ap-modal__dialog--center {
+  text-align: center;
+  padding: 36px 28px 30px;
+}
+
+.ap-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.ap-modal__title {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ap-text);
+}
+
+.ap-modal__close {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--ap-border);
+  background: var(--ap-surface);
+  color: var(--ap-text-sub);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s var(--ap-ease);
+}
+
+.ap-modal__close:hover {
+  color: var(--ap-text);
+  border-color: var(--ap-border-hover);
+}
+
+.ap-modal__body {
+  font-size: 14px;
+  color: var(--ap-text-sub);
+  line-height: 1.65;
+}
+
+.ap-modal__list {
+  margin-top: 14px;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ap-modal__list strong {
+  color: var(--ap-text);
+}
+
+.ap-modal__footer {
+  margin-top: 24px;
+}
+
+.ap-btn-modal-primary {
+  width: 100%;
+  height: 46px;
+  border: none;
+  border-radius: 12px;
+  background: var(--ap-accent);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s var(--ap-ease);
+}
+
+.ap-btn-modal-primary:hover {
+  filter: brightness(1.08);
+}
+
+.ap-modal__check {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--ap-accent-soft);
+  border: 1px solid var(--ap-border-accent);
+  color: var(--ap-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  box-shadow: 0 0 28px -4px rgba(243, 112, 33, 0.45);
+}
+
+.ap-modal__desc {
+  margin: 10px 0 24px;
+  font-size: 14.5px;
+  color: var(--ap-text-sub);
+  line-height: 1.65;
+}
+
+.ap-modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ap-modal__sub-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ap-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--ap-border);
+  background: var(--ap-surface);
+  color: var(--ap-text);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s var(--ap-ease);
+}
+
+.ap-btn-ghost:hover {
+  border-color: var(--ap-border-hover);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   Smart Responsive Breakpoints (1024px / 768px / 480px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .ap-main {
+    padding: 52px 24px 80px;
+  }
+
+  .ap-process__grid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ap-main {
+    padding: 40px 18px 68px;
+  }
+
+  .ap-hero {
+    margin-bottom: 32px;
+  }
+
+  .ap-hero__desc {
+    font-size: 15px;
+  }
+
+  .ap-card {
+    padding: 28px 22px;
+    border-radius: 20px;
+  }
+
+  .ap-form__row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .ap-process__grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .ap-step-card {
+    padding: 22px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ap-header__inner {
+    padding: 14px 16px;
+  }
+
+  .ap-logo__img {
+    height: 24px;
+  }
+
+  .ap-header__back {
+    padding: 7px 12px;
+    font-size: 12.5px;
+  }
+
+  .ap-badge {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .ap-card {
+    padding: 24px 16px;
+  }
+
+  .ap-privacy {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ap-modal__dialog {
+    padding: 24px 20px;
+  }
+
+  .ap-modal__sub-actions {
+    grid-template-columns: 1fr;
+  }
+}

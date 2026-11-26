@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>프로젝트 문의하기 | 애드플랜터스 (ADplanters)</title>
+  <meta name="description" content="브랜드 성장을 설계하는 애드플랜터스 1:1 프로젝트 상담 및 견적 문의 페이지입니다." />
+  <meta property="og:title" content="프로젝트 문의하기 | 애드플랜터스" />
+  <meta property="og:description" content="문의 내용을 남겨주시면 전담 디렉터가 확인 후 영업시간 기준 1시간 이내에 회신드립니다." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#06080c" />
+
+  <!-- Pretendard + Plus Jakarta Sans Webfonts -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- 분리된 외부 스타일시트 연결 -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- 배경 앰비언트 글로우 & 그리드 레이어 -->
+  <div class="ap-ambient" aria-hidden="true"></div>
+  <div class="ap-grid-bg" aria-hidden="true"></div>
+
+  <!-- 상단 고정 내비게이션 -->
+  <header class="ap-header">
+    <div class="ap-header__inner">
+      <a id="apLogoLink" href="#" class="ap-logo" aria-label="애드플랜터스 홈으로 이동">
+        <img
+          src="https://rawcdn.githack.com/ADplanters/Clients/140453e1438350f8569abb897dc19c3274f2fdc1/%EC%95%A0%EB%93%9C%ED%94%8C%EB%9E%9C%ED%84%B0%EC%8A%A4_%EB%A1%9C%EA%B3%A0-horizontal.png"
+          alt="애드플랜터스 로고"
+          class="ap-logo__img"
+        />
+      </a>
+      <a id="apBackHomeLink" href="#" class="ap-header__back">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5"></path>
+          <path d="M12 19l-7-7 7-7"></path>
+        </svg>
+        <span>홈으로 돌아가기</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- 1단 풀와이드 몰입형 메인 컨테이너 -->
+  <main class="ap-main">
+    <!-- 히어로 섹션 -->
+    <section class="ap-hero" aria-labelledby="apHeroTitle">
+      <div class="ap-badge">
+        <span class="ap-badge__dot" aria-hidden="true"></span>
+        <span>ADPLANTERS 1:1 PROJECT CONSULTING</span>
+      </div>
+      <h1 id="apHeroTitle" class="ap-hero__title">
+        브랜드의 확실한 성장을<br />
+        <span class="ap-hero__accent">애드플랜터스</span>와 시작하세요
+      </h1>
+      <p class="ap-hero__desc">
+        단순 대행을 넘어 성과로 증명하는 맞춤형 전략을 설계합니다.<br />
+        아래 내용을 남겨주시면 전담 디렉터가 <strong>영업시간 기준 1시간 이내</strong>에 빠르게 연락드립니다.
+      </p>
+    </section>
+
+    <!-- 메인 DB 신청 카드 (Featured Glow Card) -->
+    <section class="ap-form-section" aria-label="프로젝트 문의 신청 폼">
+      <div class="ap-card ap-card--featured">
+        <div class="ap-card__top">
+          <h2 class="ap-card__title">프로젝트 문의 남기기</h2>
+          <p class="ap-card__subtitle">필수 항목(<span class="ap-req">*</span>)만 작성해주셔도 1:1 사전 진단이 진행됩니다.</p>
+        </div>
+
+        <form id="apInquiryForm" class="ap-form" novalidate>
+          <!-- 스팸 방지 허니팟 필드 -->
+          <input type="text" name="website" class="ap-honeypot" tabindex="-1" autocomplete="off" />
+
+          <div class="ap-form__row">
+            <div class="ap-field">
+              <label class="ap-label" for="apName">성함 / 담당자명 <span class="ap-req">*</span></label>
+              <input
+                type="text"
+                id="apName"
+                name="name"
+                class="ap-input"
+                placeholder="홍길동"
+                required
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="ap-field">
+              <label class="ap-label" for="apPhone">연락처 <span class="ap-req">*</span></label>
+              <input
+                type="tel"
+                id="apPhone"
+                name="phone"
+                class="ap-input"
+                placeholder="010-0000-0000"
+                required
+                autocomplete="tel"
+              />
+            </div>
+          </div>
+
+          <div class="ap-field">
+            <label class="ap-label" for="apCompany">
+              회사 / 브랜드명 <span class="ap-opt">(선택)</span>
+            </label>
+            <input
+              type="text"
+              id="apCompany"
+              name="company"
+              class="ap-input"
+              placeholder="상호명 또는 브랜드명을 입력해주세요"
+              autocomplete="organization"
+            />
+          </div>
+
+          <div class="ap-field">
+            <span class="ap-label">문의 유형 <span class="ap-req">*</span></span>
+            <div class="ap-chips" role="radiogroup" aria-label="문의 유형 선택">
+              <label class="ap-chip">
+                <input type="radio" name="inquiryType" value="브랜드·퍼포먼스 마케팅" required />
+                <span>브랜드·퍼포먼스 마케팅</span>
+              </label>
+              <label class="ap-chip">
+                <input type="radio" name="inquiryType" value="플레이스·SEO 최적화" />
+                <span>플레이스·SEO 최적화</span>
+              </label>
+              <label class="ap-chip">
+                <input type="radio" name="inquiryType" value="홈페이지·랜딩페이지 제작" />
+                <span>홈페이지·랜딩페이지 제작</span>
+              </label>
+              <label class="ap-chip">
+                <input type="radio" name="inquiryType" value="콘텐츠·크리에이티브 기획" />
+                <span>콘텐츠·크리에이티브 기획</span>
+              </label>
+              <label class="ap-chip">
+                <input type="radio" name="inquiryType" value="종합 컨설팅·기타 문의" />
+                <span>종합 컨설팅·기타 문의</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="ap-field">
+            <label class="ap-label" for="apMessage">상세 문의 내용 <span class="ap-req">*</span></label>
+            <textarea
+              id="apMessage"
+              name="message"
+              class="ap-input ap-textarea"
+              rows="4"
+              placeholder="현재 고민 중이신 마케팅 과제, 희망 일정, 대략적인 예산 범위 등을 자유롭게 남겨주세요."
+              required
+            ></textarea>
+          </div>
+
+          <!-- 개인정보 수집 동의 + 스케일 모달 트리거 -->
+          <div class="ap-privacy">
+            <label class="ap-checkbox">
+              <input type="checkbox" id="apPrivacy" name="privacyAgree" required />
+              <span class="ap-checkbox__text"><strong>[필수]</strong> 개인정보 수집 및 이용에 동의합니다.</span>
+            </label>
+            <button type="button" id="apOpenPrivacyModal" class="ap-privacy__btn">약관 전문 보기</button>
+          </div>
+
+          <!-- 유효성 검증 오류 알림 -->
+          <p id="apErrorMsg" class="ap-error" role="alert" aria-live="polite"></p>
+
+          <!-- Primary CTA: 문의하기 (절제된 쉬머 효과 적용) -->
+          <button type="submit" id="apSubmitBtn" class="ap-btn-primary ap-shimmer">
+            <span class="ap-btn-primary__text">문의하기</span>
+            <svg class="ap-btn-primary__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+            <span class="ap-spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <!-- 구분선 -->
+        <div class="ap-divider">
+          <span>또는 실시간으로 빠르게 상담하세요</span>
+        </div>
+
+        <!-- Secondary CTA: 문의하기 버튼 바로 하단 1:1 카카오톡 바로 문의하기 -->
+        <a
+          id="apKakaoBtn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ap-btn-kakao"
+        >
+          <svg class="ap-btn-kakao__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 3C6.477 3 2 6.463 2 10.735c0 2.755 1.844 5.174 4.62 6.535-.193.713-.701 2.583-.803 2.984-.126.495.182.488.383.355.158-.105 2.51-1.703 3.53-2.394.732.104 1.49.158 2.27.158 5.523 0 10-3.463 10-7.638C22 6.463 17.523 3 12 3z"/>
+          </svg>
+          <span>1:1 카카오톡 바로 문의하기</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 하단 3단 상담 프로세스 & 신뢰 보드 -->
+    <section class="ap-process" aria-label="애드플랜터스 상담 진행 절차">
+      <div class="ap-process__grid">
+        <article class="ap-step-card">
+          <span class="ap-step-card__num">STEP 01</span>
+          <h3 class="ap-step-card__title">프로젝트 DB 접수</h3>
+          <p class="ap-step-card__desc">남겨주신 문의는 담당자 전용 시스템으로 실시간 암호화 전송됩니다.</p>
+        </article>
+        <article class="ap-step-card">
+          <span class="ap-step-card__num">STEP 02</span>
+          <h3 class="ap-step-card__title">전담 디렉터 사전 진단</h3>
+          <p class="ap-step-card__desc">업종별 경쟁 현황과 현재 채널의 핵심 개선 포인트를 먼저 분석합니다.</p>
+        </article>
+        <article class="ap-step-card">
+          <span class="ap-step-card__num">STEP 03</span>
+          <h3 class="ap-step-card__title">1:1 맞춤 전략·견적 제안</h3>
+          <p class="ap-step-card__desc">예산과 목표에 최적화된 실행 로드맵을 영업시간 1시간 내 안내합니다.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="ap-footer">
+    <p>© <span id="apYear"></span> ADplanters. All rights reserved.</p>
+  </footer>
+
+  <!-- [스케일 모달 1] 개인정보 수집 및 이용 동의 전문 -->
+  <div id="apPrivacyModal" class="ap-modal" role="dialog" aria-modal="true" aria-labelledby="apPrivacyModalTitle" aria-hidden="true">
+    <div class="ap-modal__backdrop" data-close-modal="apPrivacyModal"></div>
+    <div class="ap-modal__dialog">
+      <div class="ap-modal__header">
+        <h3 id="apPrivacyModalTitle" class="ap-modal__title">개인정보 수집 및 이용 안내</h3>
+        <button type="button" class="ap-modal__close" data-close-modal="apPrivacyModal" aria-label="모달 닫기">✕</button>
+      </div>
+      <div class="ap-modal__body">
+        <p>애드플랜터스(ADplanters)는 원활한 프로젝트 상담 및 견적 안내를 위해 아래와 같이 최소한의 개인정보를 수집·이용합니다.</p>
+        <ul class="ap-modal__list">
+          <li><strong>수집 항목:</strong> 성함/담당자명, 연락처, 회사/브랜드명, 문의 유형, 상세 문의 내용</li>
+          <li><strong>수집 및 이용 목적:</strong> 프로젝트 문의 접수, 사전 진단 및 1:1 상담 회신</li>
+          <li><strong>보유 및 이용 기간:</strong> 상담 종료 후 1년간 보관 후 파기 (단, 정보주체의 삭제 요청 시 지체 없이 파기)</li>
+          <li><strong>동의 거부 권리:</strong> 동의를 거부할 권리가 있으나, 필수 항목 미동의 시 온라인 문의 접수가 제한될 수 있습니다.</li>
+        </ul>
+      </div>
+      <div class="ap-modal__footer">
+        <button type="button" id="apAgreeAndClose" class="ap-btn-modal-primary">동의하고 닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- [스케일 모달 2] 문의 접수 완료 팝업 -->
+  <div id="apSuccessModal" class="ap-modal" role="dialog" aria-modal="true" aria-labelledby="apSuccessModalTitle" aria-hidden="true">
+    <div class="ap-modal__backdrop" data-close-modal="apSuccessModal"></div>
+    <div class="ap-modal__dialog ap-modal__dialog--center">
+      <div class="ap-modal__check" aria-hidden="true">✓</div>
+      <h3 id="apSuccessModalTitle" class="ap-modal__title">문의가 정상 접수되었습니다</h3>
+      <p class="ap-modal__desc">
+        애드플랜터스에 소중한 문의를 남겨주셔서 감사합니다.<br />
+        전담 디렉터가 내용을 검토한 뒤 빠르게 회신드리겠습니다.
+      </p>
+      <div class="ap-modal__actions">
+        <a id="apModalKakaoLink" href="#" target="_blank" rel="noopener noreferrer" class="ap-btn-kakao ap-btn-kakao--sm">
+          <svg class="ap-btn-kakao__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 3C6.477 3 2 6.463 2 10.735c0 2.755 1.844 5.174 4.62 6.535-.193.713-.701 2.583-.803 2.984-.126.495.182.488.383.355.158-.105 2.51-1.703 3.53-2.394.732.104 1.49.158 2.27.158 5.523 0 10-3.463 10-7.638C22 6.463 17.523 3 12 3z"/>
+          </svg>
+          <span>1:1 카카오톡 바로 상담</span>
+        </a>
+        <div class="ap-modal__sub-actions">
+          <a id="apModalHomeLink" href="#" class="ap-btn-ghost">홈페이지로 이동</a>
+          <button type="button" class="ap-btn-ghost" data-close-modal="apSuccessModal">창 닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 프론트엔드 비즈니스 로직 (Apps Script DB 연동 & 스케일 모달 제어) -->
+  <script>
+    (function () {
+      // =========================================================
+      // ★ 필수 설정: 아래 3개 URL을 본인 실제 주소로 교체하세요
+      // =========================================================
+      const CONFIG = {
+        // 1) 앞서 배포한 Google Apps Script 웹 앱 URL (https://script.google.com/macros/s/.../exec)
+        APPS_SCRIPT_URL: 'YOUR_APPS_SCRIPT_URL',
+
+        // 2) 1:1 카카오톡 채널 채팅 또는 오픈채팅 URL
+        KAKAO_CHAT_URL: 'YOUR_KAKAO_CHAT_URL',
+
+        // 3) 애드플랜터스 메인 홈페이지 URL
+        HOMEPAGE_URL: 'https://your-homepage-domain.com'
+      };
+
+      // 연도 및 외부 링크 자동 바인딩
+      document.getElementById('apYear').textContent = new Date().getFullYear();
+      document.getElementById('apLogoLink').href = CONFIG.HOMEPAGE_URL;
+      document.getElementById('apBackHomeLink').href = CONFIG.HOMEPAGE_URL;
+      document.getElementById('apModalHomeLink').href = CONFIG.HOMEPAGE_URL;
+      document.getElementById('apKakaoBtn').href = CONFIG.KAKAO_CHAT_URL;
+      document.getElementById('apModalKakaoLink').href = CONFIG.KAKAO_CHAT_URL;
+
+      const form = document.getElementById('apInquiryForm');
+      const phoneInput = document.getElementById('apPhone');
+      const privacyCheckbox = document.getElementById('apPrivacy');
+      const errorEl = document.getElementById('apErrorMsg');
+      const submitBtn = document.getElementById('apSubmitBtn');
+      const btnText = submitBtn.querySelector('.ap-btn-primary__text');
+      const btnArrow = submitBtn.querySelector('.ap-btn-primary__arrow');
+
+      // 스케일 모달 제어 유틸리티
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('apOpenPrivacyModal').addEventListener('click', function () {
+        openModal('apPrivacyModal');
+      });
+
+      document.getElementById('apAgreeAndClose').addEventListener('click', function () {
+        privacyCheckbox.checked = true;
+        closeModal('apPrivacyModal');
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          closeModal(el.getAttribute('data-close-modal'));
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeModal('apPrivacyModal');
+          closeModal('apSuccessModal');
+        }
+      });
+
+      // 연락처 자동 하이픈(-) 포맷팅
+      phoneInput.addEventListener('input', function (e) {
+        const digits = e.target.value.replace(/\D/g, '').slice(0, 11);
+        let formatted = digits;
+        if (digits.startsWith('02')) {
+          if (digits.length > 5) formatted = digits.replace(/(\d{2})(\d{3,4})(\d{4})/, '$1-$2-$3');
+          else if (digits.length > 2) formatted = digits.replace(/(\d{2})(\d+)/, '$1-$2');
+        } else {
+          if (digits.length > 7) formatted = digits.replace(/(\d{3})(\d{3,4})(\d{4})/, '$1-$2-$3');
+          else if (digits.length > 3) formatted = digits.replace(/(\d{3})(\d+)/, '$1-$2');
+        }
+        e.target.value = formatted;
+      });
+
+      function showError(msg) {
+        errorEl.textContent = msg;
+        errorEl.classList.add('is-visible');
+      }
+
+      function clearError() {
+        errorEl.textContent = '';
+        errorEl.classList.remove('is-visible');
+      }
+
+      // 폼 제출 및 Google Sheets Apps Script POST 전송
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        clearError();
+
+        // 스팸 봇 차단
+        if (form.website.value) return;
+
+        const name = form.name.value.trim();
+        const phone = form.phone.value.trim();
+        const company = form.company.value.trim();
+        const selectedType = form.querySelector('input[name="inquiryType"]:checked');
+        const inquiryType = selectedType ? selectedType.value : '';
+        const message = form.message.value.trim();
+        const privacyAgree = form.privacyAgree.checked;
+
+        if (!name) return showError('성함 또는 담당자명을 입력해주세요.');
+        if (phone.replace(/\D/g, '').length < 9) return showError('올바른 연락처를 입력해주세요.');
+        if (!inquiryType) return showError('문의 유형을 선택해주세요.');
+        if (!message) return showError('상세 문의 내용을 입력해주세요.');
+        if (!privacyAgree) return showError('개인정보 수집 및 이용에 동의해주세요.');
+
+        if (!CONFIG.APPS_SCRIPT_URL || CONFIG.APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL') {
+          return showError('설정 필요: index.html의 APPS_SCRIPT_URL을 실제 웹 앱 주소로 교체해주세요.');
+        }
+
+        // 중복 클릭 방지 및 로딩 상태 활성화
+        submitBtn.disabled = true;
+        submitBtn.classList.add('is-loading');
+        btnText.textContent = '접수 중입니다...';
+        btnArrow.style.display = 'none';
+
+        const payload = {
+          name: name,
+          phone: phone,
+          company: company,
+          inquiryType: inquiryType,
+          message: message,
+          privacyAgree: privacyAgree,
+          sourceUrl: window.location.href,
+          referrer: document.referrer || '직접 유입'
+        };
+
+        try {
+          const response = await fetch(CONFIG.APPS_SCRIPT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload),
+            redirect: 'follow'
+          });
+
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+
+          form.reset();
+          openModal('apSuccessModal');
+        } catch (err) {
+          console.error('ADplanters DB Submit Error:', err);
+          showError('일시적인 통신 오류가 발생했습니다. 잠시 후 다시 시도하거나 아래 1:1 카카오톡으로 문의해주세요.');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('is-loading');
+          btnText.textContent = '문의하기';
+          btnArrow.style.display = '';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
